@@ -14,19 +14,16 @@ mainClassName = 'com.empat.kelasku.Main'
 
 repositories {
     mavenCentral()
-    // You may define additional repositories, or even remove "mavenCentral()".
-    // Read more about repositories here:
-    //   http://www.gradle.org/docs/current/userguide/dependency_management.html#sec:repositories
 }
 
 
 def retrofitVersion = '2.8.1'
 
 dependencies {
-    // You can read more about how to add dependency here:
     //   http://www.gradle.org/docs/current/userguide/dependency_management.html#sec:how_to_declare_your_dependencies
     testCompile group: 'junit', name: 'junit', version: '4.10'
     
+    compile fileTree(dir: 'lib', include: '*.jar')
     
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"

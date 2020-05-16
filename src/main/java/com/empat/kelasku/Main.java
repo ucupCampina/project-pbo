@@ -3,6 +3,7 @@ package com.empat.kelasku;
 import com.empat.kelasku.data.api.jastis.JastisApi;
 import com.empat.kelasku.data.api.jastis.JastisApiInterface;
 import com.empat.kelasku.data.model.JadwalModel;
+import com.empat.kelasku.ui.view.LoginView;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -13,7 +14,15 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        getJadwal();
+        loginPage();
+    }
+    
+    public static void loginPage() {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new LoginView().setVisible(true);
+            }
+        });
     }
     
     
