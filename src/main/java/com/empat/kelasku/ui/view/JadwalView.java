@@ -13,12 +13,6 @@ public class JadwalView extends JPanel {
 	public JadwalView() {
 		
 		JLabel lblNewLabel = new JLabel("Hello Dari JadwalView");
-		lblNewLabel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-//				setExtendedState(JFrame.MAXIMIZED_BOTH);
-			}
-		});
 		add(lblNewLabel);
 
 	}

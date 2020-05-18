@@ -7,11 +7,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.empat.kelasku.Main;
 import com.empat.kelasku.data.controller.LayoutController;
+import com.empat.kelasku.data.model.KelasSocketModel;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import java.util.stream.IntStream;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -19,6 +22,7 @@ import java.awt.event.MouseEvent;
 public class KelasFullView extends JFrame {
 
 	private JPanel contentPane;
+	private JPanel kelasKosongContainer;
 
 	public KelasFullView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -29,15 +33,35 @@ public class KelasFullView extends JFrame {
 		setContentPane(contentPane);
 
 		JLabel kelasKosongSaatLabel = new JLabel("Kelas Kosong Saat Ini");
+		kelasKosongSaatLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				createKelasKosongFromSocket(Main.kelasSocket);
+			}
+		});
 		kelasKosongSaatLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(kelasKosongSaatLabel, BorderLayout.NORTH);
 
-		JPanel kelasKosongContainer = new JPanel();
+		kelasKosongContainer = new JPanel();
 		contentPane.add(kelasKosongContainer, BorderLayout.CENTER);
 		kelasKosongContainer.setLayout(new GridLayout(0, 4, 0, 0));
 
-		IntStream.range(0, 10).forEach(n -> {
-			kelasKosongContainer.add(createKelasKosongItem("Kelas " + n));
+		
+	}
+	
+	public void createKelasKosongFromSocket(KelasSocketModel kelasSocket) {
+		LayoutController.removePanelComponents(kelasKosongContainer);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		ArrayList<String> kelasKosong = kelasSocket.getKelasKosong();
+		System.out.println(kelasKosong.size());
+		kelasKosong.forEach(n -> {
+			kelasKosongContainer.add(createKelasKosongItem(n));
+			kelasKosongContainer.revalidate();
+			kelasKosongContainer.repaint();
 		});
 	}
 
@@ -48,4 +72,7 @@ public class KelasFullView extends JFrame {
 		return kelasKosongItem;
 	}
 
+	public JPanel getKelasKosongContainer() {
+		return kelasKosongContainer;
+	}
 }

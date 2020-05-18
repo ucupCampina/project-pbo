@@ -34,10 +34,11 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.GridLayout;
 
 public class LayoutView extends JFrame {
 	private JPanel contentPanel;
-    
+
 	public LayoutView() {
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		setLocationByPlatform(true);
@@ -67,16 +68,7 @@ public class LayoutView extends JFrame {
 		gl_layoutBackgroundPanel.setVerticalGroup(gl_layoutBackgroundPanel.createParallelGroup(Alignment.LEADING)
 				.addComponent(navigationPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 				.addComponent(contentPanel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE));
-		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
-		gl_contentPanel.setHorizontalGroup(
-			gl_contentPanel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 608, Short.MAX_VALUE)
-		);
-		gl_contentPanel.setVerticalGroup(
-			gl_contentPanel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 500, Short.MAX_VALUE)
-		);
-		contentPanel.setLayout(gl_contentPanel);
+		contentPanel.setLayout(new GridLayout(1, 1, 0, 0));
 
 		JLabel titleKelasku = new JLabel("Kelasku");
 		titleKelasku.setForeground(SystemColor.textHighlightText);
@@ -174,7 +166,7 @@ public class LayoutView extends JFrame {
 								.addComponent(txtpnUser, GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
 								.addContainerGap()));
 		navItemUser.setLayout(gl_navItemUser);
-		
+
 		JLabel lblX_1 = new JLabel("X");
 		lblX_1.addMouseListener(new MouseAdapter() {
 			@Override
@@ -186,37 +178,32 @@ public class LayoutView extends JFrame {
 		lblX_1.setForeground(Color.RED);
 		lblX_1.setBackground(new Color(255, 0, 51));
 		GroupLayout gl_navigationPanel = new GroupLayout(navigationPanel);
-		gl_navigationPanel.setHorizontalGroup(
-			gl_navigationPanel.createParallelGroup(Alignment.LEADING)
+		gl_navigationPanel
+				.setHorizontalGroup(gl_navigationPanel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_navigationPanel.createSequentialGroup().addGap(80).addComponent(titleKelasku)
+								.addContainerGap(80, Short.MAX_VALUE))
+						.addGroup(gl_navigationPanel.createSequentialGroup().addGap(25)
+								.addGroup(gl_navigationPanel.createParallelGroup(Alignment.TRAILING)
+										.addComponent(navItemUser, GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+										.addComponent(navItemKelas, GroupLayout.PREFERRED_SIZE, 228,
+												GroupLayout.PREFERRED_SIZE)
+										.addComponent(navItemJadwal, GroupLayout.PREFERRED_SIZE, 228,
+												GroupLayout.PREFERRED_SIZE))
+								.addGap(33))
+						.addGroup(gl_navigationPanel.createSequentialGroup()
+								.addComponent(lblX_1, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+								.addContainerGap(260, Short.MAX_VALUE)));
+		gl_navigationPanel.setVerticalGroup(gl_navigationPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_navigationPanel.createSequentialGroup()
-					.addGap(80)
-					.addComponent(titleKelasku)
-					.addContainerGap(80, Short.MAX_VALUE))
-				.addGroup(gl_navigationPanel.createSequentialGroup()
-					.addGap(25)
-					.addGroup(gl_navigationPanel.createParallelGroup(Alignment.TRAILING)
-						.addComponent(navItemUser, GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-						.addComponent(navItemKelas, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)
-						.addComponent(navItemJadwal, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE))
-					.addGap(33))
-				.addGroup(gl_navigationPanel.createSequentialGroup()
-					.addComponent(lblX_1, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(260, Short.MAX_VALUE))
-		);
-		gl_navigationPanel.setVerticalGroup(
-			gl_navigationPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_navigationPanel.createSequentialGroup()
-					.addComponent(lblX_1, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-					.addGap(26)
-					.addComponent(titleKelasku, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
-					.addGap(78)
-					.addComponent(navItemKelas, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-					.addGap(29)
-					.addComponent(navItemJadwal, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
-					.addComponent(navItemUser, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-					.addGap(56))
-		);
+						.addComponent(lblX_1, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE).addGap(26)
+						.addComponent(titleKelasku, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+						.addGap(78)
+						.addComponent(navItemKelas, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+						.addGap(29)
+						.addComponent(navItemJadwal, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
+						.addComponent(navItemUser, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+						.addGap(56)));
 
 		JTextPane txtpnJadwal_1 = new JTextPane();
 		txtpnJadwal_1.setText("Kelas");
@@ -249,7 +236,16 @@ public class LayoutView extends JFrame {
 	}
 
 	public void changePanelView(ContentViewEnum view) {
-		LayoutController.removePanelComponents(contentPanel);
+//		LayoutController.removePanelComponents(contentPanel);
+		Component[] componentList = contentPanel.getComponents();
+
+		if (componentList.length >= 1) {
+			for (Component c : componentList) {
+				contentPanel.remove(c);
+			}
+			contentPanel.revalidate();
+			contentPanel.repaint();
+		}
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {
@@ -257,8 +253,7 @@ public class LayoutView extends JFrame {
 		}
 		LayoutController.renderContent(contentPanel, view);
 	}
-	
-	
+
 	public JPanel getContentPanel() {
 		return contentPanel;
 	}
