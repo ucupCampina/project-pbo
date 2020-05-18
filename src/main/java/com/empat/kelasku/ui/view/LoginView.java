@@ -9,8 +9,29 @@ import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 import java.awt.Color;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class LoginView extends javax.swing.JFrame {
+    private javax.swing.JButton signinButton;
+    private javax.swing.JLabel anchor;
+    private javax.swing.JLabel formTitle;
+    private javax.swing.JLabel idLabel;
+    private javax.swing.JLabel passwordLabel;
+    private javax.swing.JLabel logoIconLabel;
+    private javax.swing.JLabel logoTitle;
+    private javax.swing.JLabel moreIconLabel;
+    private javax.swing.JLabel logoDesc;
+    private javax.swing.JPanel loginBackgroundPanel;
+    private javax.swing.JPanel loginFormPanel;
+    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JSeparator idSeparator;
+    private javax.swing.JSeparator passwordSeparator;
+    private javax.swing.JTextField idField;
+    private javax.swing.JPanel panelOverlay;
 
     public LoginView() {
         initComponents();
@@ -39,7 +60,6 @@ public class LoginView extends javax.swing.JFrame {
         moreIconLabel = new javax.swing.JLabel();
         moreIconLabel.setHorizontalAlignment(SwingConstants.CENTER);
         logoDesc = new javax.swing.JLabel();
-        exit = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -90,34 +110,50 @@ public class LoginView extends javax.swing.JFrame {
         signinButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         signinButton.setContentAreaFilled(false);
         signinButton.setFocusPainted(false);
+        
+        exit_1 = new JLabel();
+        exit_1.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		System.exit(0);
+        	}
+        });
+        exit_1.setText("X");
+        exit_1.setHorizontalAlignment(SwingConstants.CENTER);
+        exit_1.setForeground(new Color(231, 73, 134));
+        exit_1.setFont(new Font("Dialog", Font.BOLD, 14));
+        exit_1.setBackground(new Color(231, 73, 134));
 
         javax.swing.GroupLayout gl_loginFormPanel = new javax.swing.GroupLayout(loginFormPanel);
         gl_loginFormPanel.setHorizontalGroup(
         	gl_loginFormPanel.createParallelGroup(Alignment.LEADING)
         		.addGroup(gl_loginFormPanel.createSequentialGroup()
-        			.addGap(64)
         			.addGroup(gl_loginFormPanel.createParallelGroup(Alignment.LEADING)
-        				.addComponent(formTitle, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        				.addGroup(Alignment.TRAILING, gl_loginFormPanel.createSequentialGroup()
-        					.addComponent(anchor)
-        					.addGap(317))
-        				.addGroup(Alignment.TRAILING, gl_loginFormPanel.createParallelGroup(Alignment.LEADING)
-        					.addComponent(passwordLabel)
-        					.addGroup(Alignment.TRAILING, gl_loginFormPanel.createSequentialGroup()
-        						.addGroup(gl_loginFormPanel.createParallelGroup(Alignment.TRAILING)
-        							.addComponent(passwordField, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
-        							.addComponent(passwordSeparator, Alignment.LEADING)
-        							.addComponent(idLabel, Alignment.LEADING)
-        							.addComponent(idSeparator, Alignment.LEADING)
-        							.addComponent(idField, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
-        							.addComponent(signinButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE))
-        						.addGap(37))))
+        				.addGroup(gl_loginFormPanel.createSequentialGroup()
+        					.addGap(64)
+        					.addGroup(gl_loginFormPanel.createParallelGroup(Alignment.TRAILING)
+        						.addComponent(formTitle, GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+        						.addGroup(gl_loginFormPanel.createSequentialGroup()
+        							.addComponent(anchor)
+        							.addGap(317))
+        						.addComponent(passwordLabel)
+        						.addGroup(gl_loginFormPanel.createSequentialGroup()
+        							.addGroup(gl_loginFormPanel.createParallelGroup(Alignment.TRAILING)
+        								.addComponent(passwordField, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+        								.addComponent(passwordSeparator, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        								.addComponent(idLabel, Alignment.LEADING)
+        								.addComponent(idSeparator, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        								.addComponent(idField, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+        								.addComponent(signinButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE))
+        							.addGap(37))))
+        				.addComponent(exit_1, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
         			.addContainerGap())
         );
         gl_loginFormPanel.setVerticalGroup(
         	gl_loginFormPanel.createParallelGroup(Alignment.LEADING)
         		.addGroup(gl_loginFormPanel.createSequentialGroup()
-        			.addGap(69)
+        			.addComponent(exit_1, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+        			.addGap(41)
         			.addComponent(anchor)
         			.addPreferredGap(ComponentPlacement.RELATED)
         			.addComponent(formTitle)
@@ -170,51 +206,39 @@ public class LoginView extends javax.swing.JFrame {
         logoDesc.setForeground(new java.awt.Color(102, 102, 102));
         logoDesc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logoDesc.setText("<html>\n<br>Tingkatkan iman dan takwa!</br>\n<br>&emsp;Hilangkan kebodohan!!!</br>\n</html>");
-
-        exit.setBackground(new java.awt.Color(231, 73, 134));
-        exit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        exit.setForeground(new java.awt.Color(231, 73, 134));
-        exit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        exit.setText("X");
-        exit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                exitMouseClicked(evt);
-            }
-        });
+        
 
         javax.swing.GroupLayout gl_panelOverlay = new javax.swing.GroupLayout(panelOverlay);
         gl_panelOverlay.setHorizontalGroup(
         	gl_panelOverlay.createParallelGroup(Alignment.LEADING)
         		.addGroup(gl_panelOverlay.createSequentialGroup()
         			.addContainerGap(128, Short.MAX_VALUE)
-        			.addGroup(gl_panelOverlay.createParallelGroup(Alignment.LEADING)
-        				.addGroup(Alignment.TRAILING, gl_panelOverlay.createSequentialGroup()
+        			.addGroup(gl_panelOverlay.createParallelGroup(Alignment.TRAILING)
+        				.addGroup(gl_panelOverlay.createSequentialGroup()
         					.addComponent(logoIconLabel)
         					.addGap(137))
-        				.addGroup(Alignment.TRAILING, gl_panelOverlay.createSequentialGroup()
+        				.addGroup(gl_panelOverlay.createSequentialGroup()
         					.addComponent(moreIconLabel)
         					.addGap(221))
-        				.addComponent(exit, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-        				.addGroup(Alignment.TRAILING, gl_panelOverlay.createSequentialGroup()
+        				.addGroup(gl_panelOverlay.createSequentialGroup()
         					.addComponent(logoDesc, GroupLayout.PREFERRED_SIZE, 252, GroupLayout.PREFERRED_SIZE)
         					.addGap(110))
-        				.addGroup(Alignment.TRAILING, gl_panelOverlay.createSequentialGroup()
+        				.addGroup(gl_panelOverlay.createSequentialGroup()
         					.addComponent(logoTitle)
         					.addGap(188))))
         );
         gl_panelOverlay.setVerticalGroup(
         	gl_panelOverlay.createParallelGroup(Alignment.LEADING)
         		.addGroup(gl_panelOverlay.createSequentialGroup()
-        			.addComponent(exit, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-        			.addGap(50)
+        			.addGap(78)
         			.addComponent(logoIconLabel)
         			.addPreferredGap(ComponentPlacement.RELATED)
         			.addComponent(logoTitle, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
         			.addPreferredGap(ComponentPlacement.RELATED)
         			.addComponent(logoDesc, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
-        			.addGap(51)
+        			.addGap(41)
         			.addComponent(moreIconLabel)
-        			.addContainerGap(298, Short.MAX_VALUE))
+        			.addContainerGap(308, Short.MAX_VALUE))
         );
         panelOverlay.setLayout(gl_panelOverlay);
 
@@ -248,14 +272,6 @@ public class LoginView extends javax.swing.JFrame {
 
 	public void setXx(int xx) {
 		this.xx = xx;
-	}
-
-	public javax.swing.JLabel getExit() {
-		return exit;
-	}
-
-	public void setExit(javax.swing.JLabel exit) {
-		this.exit = exit;
 	}
 
 	public javax.swing.JButton getjButton2() {
@@ -390,6 +406,7 @@ public class LoginView extends javax.swing.JFrame {
 	}
     int xy;
     int xx;
+    private JLabel exit_1;
 
     private void pnl_overlayMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_overlayMouseDragged
         // TODO add your handling code here:int x = evt.getXOnScreen();
@@ -400,11 +417,6 @@ public class LoginView extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_pnl_overlayMousePressed
-
-    private void exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMouseClicked
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_exitMouseClicked
 
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
         // TODO add your handling code here:
@@ -419,24 +431,4 @@ public class LoginView extends javax.swing.JFrame {
         int y = evt.getYOnScreen();
         this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_jPanel2MouseDragged
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel exit;
-    private javax.swing.JButton signinButton;
-    private javax.swing.JLabel anchor;
-    private javax.swing.JLabel formTitle;
-    private javax.swing.JLabel idLabel;
-    private javax.swing.JLabel passwordLabel;
-    private javax.swing.JLabel logoIconLabel;
-    private javax.swing.JLabel logoTitle;
-    private javax.swing.JLabel moreIconLabel;
-    private javax.swing.JLabel logoDesc;
-    private javax.swing.JPanel loginBackgroundPanel;
-    private javax.swing.JPanel loginFormPanel;
-    private javax.swing.JPasswordField passwordField;
-    private javax.swing.JSeparator idSeparator;
-    private javax.swing.JSeparator passwordSeparator;
-    private javax.swing.JTextField idField;
-    private javax.swing.JPanel panelOverlay;
-    // End of variables declaration//GEN-END:variables
 }
