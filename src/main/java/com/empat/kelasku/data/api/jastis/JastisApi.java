@@ -1,8 +1,11 @@
 package com.empat.kelasku.data.api.jastis;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.empat.kelasku.Main;
 import com.empat.kelasku.data.model.JadwalModel;
+import com.empat.kelasku.ui.view.JadwalView;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -15,8 +18,6 @@ public class JastisApi {
 
     public static final String BASE_URL = "http://jastis.herokuapp.com/api/v1/";
     private static Retrofit retrofit = null;
-    
-    public static List<JadwalModel> listJadwal;
 
 
     public static Retrofit getClient() {
@@ -32,13 +33,17 @@ public class JastisApi {
     public static void getJadwal() {
         JastisApiInterface jastisApiInterface = JastisApi.getClient().create(JastisApiInterface.class);
         
-        System.out.println("Sending and getJadwal API request...");
+        System.out.println("Sending getJadwal API request...");
         
-        Call<List<JadwalModel>> jadwalCall = jastisApiInterface.getJadwal();
+        Call<List<JadwalModel>> jadwalCall = jastisApiInterface.getJadwal("senin", "11", "RPL", "1");
         jadwalCall.enqueue(new Callback<List<JadwalModel>>() {
             @Override
             public void onResponse(Call<List<JadwalModel>> call, Response<List<JadwalModel>> response) {
-                listJadwal = (List<JadwalModel>) response.body();
+                Main.listJadwal = (ArrayList<JadwalModel>) response.body();
+                System.out.println("Request done with " + Main.listJadwal.size() + " of total items");
+                if (Main.listJadwal != null) {
+                	((JadwalView) Main.activeContentPanelView).createJadwalHariIni(Main.listJadwal);                	
+                }
             }
 
             @Override

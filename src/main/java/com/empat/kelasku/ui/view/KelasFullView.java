@@ -25,31 +25,35 @@ public class KelasFullView extends JFrame {
 	private JPanel kelasKosongContainer;
 
 	public KelasFullView() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 
-		JLabel kelasKosongSaatLabel = new JLabel("Kelas Kosong Saat Ini");
-		kelasKosongSaatLabel.addMouseListener(new MouseAdapter() {
+		JLabel kelasKosongSaatIniLabel = new JLabel("Kelas Kosong Saat Ini");
+		kelasKosongSaatIniLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				createKelasKosongFromSocket(Main.kelasSocket);
+				createKelasKosong(Main.kelasSocket);
 			}
 		});
-		kelasKosongSaatLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		contentPane.add(kelasKosongSaatLabel, BorderLayout.NORTH);
+		kelasKosongSaatIniLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		contentPane.add(kelasKosongSaatIniLabel, BorderLayout.NORTH);
 
 		kelasKosongContainer = new JPanel();
 		contentPane.add(kelasKosongContainer, BorderLayout.CENTER);
 		kelasKosongContainer.setLayout(new GridLayout(0, 4, 0, 0));
-
 		
+		if (Main.kelasSocket != null) {
+			createKelasKosong(Main.kelasSocket);
+		}
+		Main.isKelasFullViewRendered = true;
 	}
 	
-	public void createKelasKosongFromSocket(KelasSocketModel kelasSocket) {
+	public void createKelasKosong(KelasSocketModel kelasSocket) {
 		LayoutController.removePanelComponents(kelasKosongContainer);
 		try {
 			Thread.sleep(1000);

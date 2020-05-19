@@ -8,7 +8,12 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import com.empat.kelasku.Main;
+
 import javax.swing.JTextPane;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class KelasView extends JFrame {
 	public KelasView() {
@@ -19,13 +24,11 @@ public class KelasView extends JFrame {
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 489, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(166, Short.MAX_VALUE))
+				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
 		);
 		
 		JLabel lblKelasKosongSaat = new JLabel("Kelas kosong saat ini");
@@ -153,6 +156,16 @@ public class KelasView extends JFrame {
 		pnlKelas_1_1.setBackground(Color.WHITE);
 		
 		JTextPane txtpnLebihLengkap = new JTextPane();
+		txtpnLebihLengkap.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (Main.kelasFullView == null) {
+					Main.kelasFullView = new KelasFullView();
+					Main.kelasFullView.setVisible(true);
+				}
+				Main.kelasFullView.setVisible(true);
+			}
+		});
 		txtpnLebihLengkap.setText("Lebih Lengkap");
 		txtpnLebihLengkap.setForeground(Color.BLACK);
 		txtpnLebihLengkap.setFont(new Font("Segoe UI", Font.PLAIN, 14));

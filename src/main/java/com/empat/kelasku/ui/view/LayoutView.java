@@ -56,7 +56,7 @@ public class LayoutView extends JFrame {
 		navigationPanel.setBackground(Constants.accentColor);
 
 		contentPanel = new JPanel();
-		changePanelView(ContentViewEnum.JadwalView);
+		changePanelView(ContentViewEnum.KelasView);
 
 		GroupLayout gl_layoutBackgroundPanel = new GroupLayout(layoutBackgroundPanel);
 		gl_layoutBackgroundPanel.setHorizontalGroup(gl_layoutBackgroundPanel.createParallelGroup(Alignment.LEADING)

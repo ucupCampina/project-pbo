@@ -19,7 +19,7 @@ public class JastisSocket {
 
 	public JastisSocket() {
 		try {
-			socket = IO.socket("http://localhost:4000");
+			socket = IO.socket("http://jastis.herokuapp.com");
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
