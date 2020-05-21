@@ -1,5 +1,10 @@
 package com.empat.kelasku.ui.view;
 
+import com.empat.kelasku.Main;
+import com.empat.kelasku.data.api.jastis.JastisApi;
+import com.empat.kelasku.data.controller.AuthController;
+import com.empat.kelasku.data.model.LoginModel;
+import com.empat.kelasku.data.model.ResponseModel;
 import com.empat.kelasku.util.Constants;
 import com.empat.kelasku.util.ImageResizer;
 import java.awt.Image;
@@ -14,6 +19,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.concurrent.BlockingQueue;
 
 public class LoginView extends javax.swing.JFrame {
     private javax.swing.JButton signinButton;
@@ -52,6 +58,20 @@ public class LoginView extends javax.swing.JFrame {
         passwordField = new javax.swing.JPasswordField();
         passwordSeparator = new javax.swing.JSeparator();
         signinButton = new javax.swing.JButton();
+        signinButton.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		String id = idField.getText();
+        		String password = String.valueOf(passwordField.getPassword());
+        		
+        		boolean success = AuthController.loginUser(id, password);
+        		if (success) {
+        			dispose();
+        			Main.mainPage();
+        		}
+        		
+        	}
+        });
         panelOverlay = new javax.swing.JPanel();
         logoIconLabel = new javax.swing.JLabel();
         logoIconLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -136,15 +156,15 @@ public class LoginView extends javax.swing.JFrame {
         						.addGroup(gl_loginFormPanel.createSequentialGroup()
         							.addComponent(anchor)
         							.addGap(317))
-        						.addComponent(passwordLabel)
         						.addGroup(gl_loginFormPanel.createSequentialGroup()
         							.addGroup(gl_loginFormPanel.createParallelGroup(Alignment.TRAILING)
         								.addComponent(passwordField, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
-        								.addComponent(passwordSeparator, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         								.addComponent(idLabel, Alignment.LEADING)
-        								.addComponent(idSeparator, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         								.addComponent(idField, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
-        								.addComponent(signinButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE))
+        								.addComponent(signinButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+        								.addComponent(passwordLabel, Alignment.LEADING)
+        								.addComponent(passwordSeparator, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+        								.addComponent(idSeparator, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE))
         							.addGap(37))))
         				.addComponent(exit_1, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
         			.addContainerGap())

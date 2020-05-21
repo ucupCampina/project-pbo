@@ -15,6 +15,9 @@ import com.empat.kelasku.data.model.KelasSocketModel;
 import java.awt.GridLayout;
 
 public class JadwalView extends JPanel {
+	
+	public static String tingkat = "11", jurusan = "RPL", rombel = "1";
+	
 	private JPanel jadwalHariIniContainer;
 
 	public JadwalView() {

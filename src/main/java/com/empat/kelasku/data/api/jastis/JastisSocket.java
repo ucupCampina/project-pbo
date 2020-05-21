@@ -4,6 +4,7 @@ import java.net.URISyntaxException;
 
 import org.json.JSONObject;
 
+import com.empat.kelasku.data.model.Environment;
 import com.empat.kelasku.data.model.KelasSocketModel;
 import com.empat.kelasku.util.CallbackInterface;
 import com.google.gson.Gson;
@@ -19,7 +20,10 @@ public class JastisSocket {
 
 	public JastisSocket() {
 		try {
-			socket = IO.socket("http://jastis.herokuapp.com");
+
+			// http://localhost:3001
+			// http://jastis.herokuapp.com
+			socket = IO.socket(Environment.DEV.getUrl());
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
@@ -41,10 +45,11 @@ public class JastisSocket {
 
 			}
 
-		}).on("event", new Emitter.Listener() {
+		}).on("serverMessage", new Emitter.Listener() {
 
 			@Override
 			public void call(Object... args) {
+				System.out.println("Message from socket server:\n" + args[0]);
 			}
 
 		}).on(Socket.EVENT_DISCONNECT, new Emitter.Listener() {
@@ -57,14 +62,14 @@ public class JastisSocket {
 		});
 		socket.connect();
 	}
-	
+
 	public void listenForEmptyClass(CallbackInterface callbackInterface) {
 		socket.on("listenForEmptyClassRoom", new Emitter.Listener() {
 			@Override
 			public void call(Object... args) {
 				System.out.println(args[0]);
-			    KelasSocketModel kelasSocket = new Gson().fromJson(args[0].toString(), KelasSocketModel.class);
-			    callbackInterface.kelasSocketCallback(kelasSocket);
+				KelasSocketModel kelasSocket = new Gson().fromJson(args[0].toString(), KelasSocketModel.class);
+				callbackInterface.kelasSocketCallback(kelasSocket);
 			}
 		});
 	}

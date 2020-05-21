@@ -15,6 +15,7 @@ import com.empat.kelasku.ui.view.UserView;
 
 public class LayoutController {
 	
+
 	public static void renderContent(JPanel contentPanel, ContentViewEnum view) {
 		switch (view) {
 		case KelasView:
@@ -25,7 +26,7 @@ public class LayoutController {
 			Main.activeContentPanelView = new JadwalView();
 			contentPanel.add((JadwalView) Main.activeContentPanelView);
 			if (Main.listJadwal == null) {
-				JastisApi.getJadwal();
+				JastisApi.getJadwal(JadwalView.tingkat, JadwalView.jurusan, JadwalView.rombel);
 			}
 			if (Main.listJadwal != null) {
 				((JadwalView) Main.activeContentPanelView).createJadwalHariIni(Main.listJadwal);				
@@ -54,4 +55,5 @@ public class LayoutController {
 
 		
 	}
+
 }
