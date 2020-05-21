@@ -1,6 +1,7 @@
 package com.empat.kelasku.ui.view;
 
 import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -10,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import com.empat.kelasku.Main;
 import com.empat.kelasku.data.controller.LayoutController;
 import com.empat.kelasku.data.model.KelasSocketModel;
+import com.empat.kelasku.ui.view.components.CustomCardComponent;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -69,10 +71,8 @@ public class KelasFullView extends JFrame {
 		});
 	}
 
-	public JPanel createKelasKosongItem(String namaKelas) {
-		JPanel kelasKosongItem = new JPanel();
-		JLabel kelasKosongLabel = new JLabel(namaKelas);
-		kelasKosongItem.add(kelasKosongLabel);
+	public Container createKelasKosongItem(String namaKelas) {
+		Container kelasKosongItem = new CustomCardComponent(namaKelas).getContentPane();
 		return kelasKosongItem;
 	}
 

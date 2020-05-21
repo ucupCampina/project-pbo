@@ -178,32 +178,37 @@ public class LayoutView extends JFrame {
 		lblX_1.setForeground(Color.RED);
 		lblX_1.setBackground(new Color(255, 0, 51));
 		GroupLayout gl_navigationPanel = new GroupLayout(navigationPanel);
-		gl_navigationPanel
-				.setHorizontalGroup(gl_navigationPanel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_navigationPanel.createSequentialGroup().addGap(80).addComponent(titleKelasku)
-								.addContainerGap(80, Short.MAX_VALUE))
-						.addGroup(gl_navigationPanel.createSequentialGroup().addGap(25)
-								.addGroup(gl_navigationPanel.createParallelGroup(Alignment.TRAILING)
-										.addComponent(navItemUser, GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-										.addComponent(navItemKelas, GroupLayout.PREFERRED_SIZE, 228,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(navItemJadwal, GroupLayout.PREFERRED_SIZE, 228,
-												GroupLayout.PREFERRED_SIZE))
-								.addGap(33))
-						.addGroup(gl_navigationPanel.createSequentialGroup()
-								.addComponent(lblX_1, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-								.addContainerGap(260, Short.MAX_VALUE)));
-		gl_navigationPanel.setVerticalGroup(gl_navigationPanel.createParallelGroup(Alignment.LEADING)
+		gl_navigationPanel.setHorizontalGroup(
+			gl_navigationPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_navigationPanel.createSequentialGroup()
-						.addComponent(lblX_1, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE).addGap(26)
-						.addComponent(titleKelasku, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
-						.addGap(78)
-						.addComponent(navItemKelas, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-						.addGap(29)
-						.addComponent(navItemJadwal, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
-						.addComponent(navItemUser, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-						.addGap(56)));
+					.addGap(80)
+					.addComponent(titleKelasku)
+					.addContainerGap(80, Short.MAX_VALUE))
+				.addGroup(gl_navigationPanel.createSequentialGroup()
+					.addComponent(lblX_1, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(277, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, gl_navigationPanel.createSequentialGroup()
+					.addContainerGap(42, Short.MAX_VALUE)
+					.addGroup(gl_navigationPanel.createParallelGroup(Alignment.TRAILING, false)
+						.addComponent(navItemUser, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(navItemKelas, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 228, Short.MAX_VALUE)
+						.addComponent(navItemJadwal, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
+					.addGap(33))
+		);
+		gl_navigationPanel.setVerticalGroup(
+			gl_navigationPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_navigationPanel.createSequentialGroup()
+					.addComponent(lblX_1, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+					.addGap(26)
+					.addComponent(titleKelasku, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+					.addGap(78)
+					.addComponent(navItemKelas, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+					.addGap(29)
+					.addComponent(navItemJadwal, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+					.addGap(140)
+					.addComponent(navItemUser, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(56, Short.MAX_VALUE))
+		);
 
 		JTextPane txtpnJadwal_1 = new JTextPane();
 		txtpnJadwal_1.setText("Kelas");

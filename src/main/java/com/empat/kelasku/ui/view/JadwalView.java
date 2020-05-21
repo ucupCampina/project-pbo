@@ -6,11 +6,14 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.awt.BorderLayout;
+import java.awt.Container;
+
 import javax.swing.SwingConstants;
 
 import com.empat.kelasku.data.controller.LayoutController;
 import com.empat.kelasku.data.model.JadwalModel;
 import com.empat.kelasku.data.model.KelasSocketModel;
+import com.empat.kelasku.ui.view.components.CustomCardComponent;
 
 import java.awt.GridLayout;
 
@@ -48,10 +51,8 @@ public class JadwalView extends JPanel {
 		});
 	}
 
-	public JPanel createJadwalHariIniItem(String namaKelas) {
-		JPanel jadwalItem = new JPanel();
-		JLabel jadwalLabel = new JLabel(namaKelas);
-		jadwalItem.add(jadwalLabel);
+	public Container createJadwalHariIniItem(String namaKelas) {
+		Container jadwalItem = new CustomCardComponent(namaKelas).getContentPane();
 		return jadwalItem;
 	}
 

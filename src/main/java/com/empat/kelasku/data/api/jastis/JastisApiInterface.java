@@ -14,10 +14,15 @@ import com.empat.kelasku.data.model.ResponseModel;
 import java.util.List;
 
 public interface JastisApiInterface {
-	@GET("jadwal")
-	Call<List<JadwalModel>> getJadwal(@Query("tingkat") String tingkat, @Query("jurusan") String jurusan,
-			@Query("rombel") String rombel);
 
 	@POST("user/auth")
 	Call<ResponseModel> loginUser(@Body LoginModel data);
+	
+	@GET("jadwal")
+	Call<List<JadwalModel>> getJadwal(@Query("tingkat") String tingkat, @Query("jurusan") String jurusan,
+			@Query("rombel") String rombel);
+	
+	@GET("kelas/request")
+	Call<ResponseModel> requestKelas(@Query("user_id") String userId, @Query("kelas") String kelas);
+
 }

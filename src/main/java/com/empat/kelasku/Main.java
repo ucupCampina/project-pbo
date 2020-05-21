@@ -42,7 +42,8 @@ public class Main {
 		jastisSocket = JastisSocket.getInstance();
 		try {
 			jastisSocket.connect();
-		} catch (URISyntaxException e) {
+		} catch (Exception e) {
+			System.out.println(e);
 			e.printStackTrace();
 		}
 		KelasSocketCallback kelasSocketCallback = new KelasSocketCallback();
