@@ -2,51 +2,68 @@ package com.empat.kelasku;
 
 import com.empat.kelasku.data.api.jastis.JastisApi;
 import com.empat.kelasku.data.api.jastis.JastisApiInterface;
+import com.empat.kelasku.data.api.jastis.JastisSocket;
+import com.empat.kelasku.data.api.jastis.KelasSocketCallback;
 import com.empat.kelasku.data.model.JadwalModel;
+import com.empat.kelasku.data.model.KelasSocketModel;
+import com.empat.kelasku.ui.view.KelasFullView;
+import com.empat.kelasku.ui.view.LayoutView;
 import com.empat.kelasku.ui.view.LoginView;
+import com.empat.kelasku.util.CallbackInterface;
+
+import java.awt.Component;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JFrame;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Main {
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        loginPage();
-    }
-    
-    public static void loginPage() {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoginView().setVisible(true);
-            }
-        });
-    }
-    
-    
-    // ? Example API request
-    public static void getJadwal() {
-        JastisApiInterface jastisApiInterface = JastisApi.getClient().create(JastisApiInterface.class);
-        
-        System.out.println("Sending and API request...");
-        
-        Call<List<JadwalModel>> jadwalCall = jastisApiInterface.getJadwal();
-        jadwalCall.enqueue(new Callback<List<JadwalModel>>() {
-            @Override
-            public void onResponse(Call<List<JadwalModel>> call, Response<List<JadwalModel>> response) {
-                List<JadwalModel> listJadwal = (List<JadwalModel>) response.body();
-                listJadwal.forEach(data -> {
-                    // ! Do something with the data
-                    System.out.println(data);
-                });
-            }
 
-            @Override
-            public void onFailure(Call<List<JadwalModel>> call, Throwable t) {
-                System.out.println("Get jadwal API with error" + t.toString());
-            }
-        });
-    }
+	public static JastisSocket jastisSocket;
+	public static KelasSocketModel kelasSocket;
+	
+	public static KelasFullView kelasFullView;
+	public static ArrayList<JadwalModel> listJadwal;
+	
+	public static Component activeContentPanelView;
+	public static boolean isKelasFullViewRendered = false;
+
+	public static void main(String[] args) {
+		startKelasSocket();
+		mainPage();
+	}
+
+	public static void startKelasSocket() {
+		jastisSocket = JastisSocket.getInstance();
+		try {
+			jastisSocket.connect();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		KelasSocketCallback kelasSocketCallback = new KelasSocketCallback();
+		jastisSocket.listenForEmptyClass(kelasSocketCallback);
+	}
+
+	public static void loginPage() {
+		java.awt.EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				new LoginView().setVisible(true);
+			}
+		});
+	}
+
+	public static void mainPage() {
+		java.awt.EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				new LayoutView().setVisible(true);
+			}
+		});
+	}
+
+
 }
