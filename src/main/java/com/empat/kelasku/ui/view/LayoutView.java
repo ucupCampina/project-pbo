@@ -1,9 +1,11 @@
 package com.empat.kelasku.ui.view;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
@@ -21,13 +23,13 @@ import javax.swing.SwingConstants;
 import com.empat.kelasku.data.controller.LayoutController;
 import com.empat.kelasku.data.model.ContentViewEnum;
 import com.empat.kelasku.util.Constants;
+import java.awt.GridBagLayout;
 
 public class LayoutView extends JFrame {
 	private JPanel contentPanel;
 
 	public LayoutView() {
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-		setLocationByPlatform(true);
 		setUndecorated(true);
 		setSize(900, 500);
 
@@ -54,6 +56,7 @@ public class LayoutView extends JFrame {
 		navigationPanel.setBackground(Constants.accentColor);
 
 		contentPanel = new JPanel();
+		contentPanel.setBackground(Color.WHITE);
 		contentPanel.addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
 			public void mouseDragged(MouseEvent e) {
@@ -78,7 +81,12 @@ public class LayoutView extends JFrame {
 		gl_layoutBackgroundPanel.setVerticalGroup(gl_layoutBackgroundPanel.createParallelGroup(Alignment.LEADING)
 				.addComponent(navigationPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 				.addComponent(contentPanel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE));
-		contentPanel.setLayout(new GridLayout(1, 1, 0, 0));
+		GridBagLayout gbl_contentPanel = new GridBagLayout();
+		gbl_contentPanel.columnWidths = new int[]{0};
+		gbl_contentPanel.rowHeights = new int[]{0};
+		gbl_contentPanel.columnWeights = new double[]{Double.MIN_VALUE};
+		gbl_contentPanel.rowWeights = new double[]{Double.MIN_VALUE};
+		contentPanel.setLayout(gbl_contentPanel);
 
 		JLabel titleKelasku = new JLabel("Kelasku");
 		titleKelasku.setForeground(SystemColor.textHighlightText);

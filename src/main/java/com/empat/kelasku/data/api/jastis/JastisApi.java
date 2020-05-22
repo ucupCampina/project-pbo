@@ -57,6 +57,7 @@ public class JastisApi {
 	public static void getJadwal(String tingkat, String jurusan, String rombel) {
 		JastisApiInterface jastisApiInterface = JastisApi.getClient().create(JastisApiInterface.class);
 
+		System.out.println(tingkat + jurusan + rombel);
 		System.out.println("Sending getJadwal API request...");
 
 		Call<List<JadwalModel>> jadwalCall = jastisApiInterface.getJadwal(tingkat, jurusan, rombel);
@@ -66,7 +67,9 @@ public class JastisApi {
 				Main.listJadwal = (ArrayList<JadwalModel>) response.body();
 				System.out.println("Request done with " + Main.listJadwal.size() + " of total items");
 				if (Main.listJadwal != null) {
-					((JadwalView) Main.activeContentPanelView).createJadwalHariIni(Main.listJadwal);
+					if (Main.activeContentPanelView instanceof JadwalView) {
+						((JadwalView) Main.activeContentPanelView).createJadwalHariIni(Main.listJadwal);						
+					}
 				}
 			}
 

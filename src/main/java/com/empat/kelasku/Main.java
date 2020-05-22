@@ -1,6 +1,8 @@
 package com.empat.kelasku;
 
 import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 
 import com.empat.kelasku.data.api.jastis.JastisSocket;
@@ -42,7 +44,8 @@ public class Main {
 	public static void loginPage() {
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				new LoginView().setVisible(true);
+				LoginView loginView = new LoginView();
+				loginView.setVisible(true);
 			}
 		});
 	}
@@ -50,10 +53,19 @@ public class Main {
 	public static void mainPage() {
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				new LayoutView().setVisible(true);
+				LayoutView layoutView = new LayoutView();
+//				layoutView.setLocationRelativeTo(null);
+				layoutView.setVisible(true);
 			}
 		});
 	}
+	
+	public static void centeredFrame(javax.swing.JFrame objFrame){
+        Dimension objDimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int iCoordX = (objDimension.width - objFrame.getWidth()) / 2;
+        int iCoordY = (objDimension.height - objFrame.getHeight()) / 2;
+        objFrame.setLocation(iCoordX, iCoordY); 
+    } 
 
 
 }

@@ -1,6 +1,7 @@
 package com.empat.kelasku.data.controller;
 
 import java.awt.Component;
+import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
@@ -22,7 +23,7 @@ public class LayoutController {
 			break;
 		case JadwalView:
 			Main.activeContentPanelView = new JadwalView();
-			contentPanel.add((JadwalView) Main.activeContentPanelView);
+			contentPanel.add(((JadwalView) Main.activeContentPanelView).getContentPane());
 			if (Main.listJadwal == null) {
 				JastisApi.getJadwal(JadwalView.tingkat, JadwalView.jurusan, JadwalView.rombel);
 			}
