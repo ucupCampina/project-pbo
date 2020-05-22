@@ -1,14 +1,9 @@
 package com.empat.kelasku.data.api.jastis;
 
 import java.net.URISyntaxException;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-
-import org.json.JSONObject;
 
 import com.empat.kelasku.data.model.Environment;
 import com.empat.kelasku.data.model.KelasSocketModel;
-import com.empat.kelasku.data.model.ResponseModel;
 import com.empat.kelasku.util.CallbackInterface;
 import com.google.gson.Gson;
 
@@ -25,7 +20,7 @@ public class JastisSocket {
 	public JastisSocket() {
 		try {
 
-			socket = IO.socket(Environment.PROD.getUrl());
+			socket = IO.socket(Environment.DEV.getUrl());
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
@@ -41,7 +36,7 @@ public class JastisSocket {
 	public void connect() throws URISyntaxException {
 
 		System.out.println("Connecting to socket...");
-		
+
 		socket.on(Socket.EVENT_CONNECT, new Emitter.Listener() {
 
 			@Override
@@ -79,4 +74,5 @@ public class JastisSocket {
 			}
 		});
 	}
+
 }

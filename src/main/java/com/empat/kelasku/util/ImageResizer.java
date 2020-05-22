@@ -2,6 +2,7 @@ package com.empat.kelasku.util;
 
 import java.awt.Image;
 import java.net.URL;
+
 import javax.swing.ImageIcon;
 
 public class ImageResizer {

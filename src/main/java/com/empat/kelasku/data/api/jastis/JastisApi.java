@@ -1,6 +1,5 @@
 package com.empat.kelasku.data.api.jastis;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
@@ -12,19 +11,16 @@ import com.empat.kelasku.data.model.JadwalModel;
 import com.empat.kelasku.data.model.LoginModel;
 import com.empat.kelasku.data.model.ResponseModel;
 import com.empat.kelasku.ui.view.JadwalView;
-import com.google.gson.Gson;
 
-import io.socket.client.Ack;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Query;
 
 public class JastisApi {
 
-	public static final String BASE_URL = Environment.PROD.getUrl() + "/api/v1/";
+	public static final String BASE_URL = Environment.DEV.getUrl() + "/api/v1/";
 	private static Retrofit retrofit = null;
 
 	public static Retrofit getClient() {
@@ -90,7 +86,7 @@ public class JastisApi {
 		System.out.println("Sending requestKelas API request...");
 
 		Call<ResponseModel> requestKelasCall = jastisApiInterface.requestKelas(userId, kelas);
-		
+
 		requestKelasCall.enqueue(new Callback<ResponseModel>() {
 
 			@Override
@@ -103,7 +99,7 @@ public class JastisApi {
 				System.out.println("Get requestKelas API with error" + t.toString());
 			}
 		});
-		
+
 		try {
 			response = blockingQueue.take();
 		} catch (InterruptedException e) {
@@ -111,4 +107,5 @@ public class JastisApi {
 		}
 		return response;
 	}
+
 }

@@ -1,23 +1,20 @@
 package com.empat.kelasku.ui.view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import com.empat.kelasku.util.Constants;
-import com.empat.kelasku.util.ImageResizer;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import java.awt.Font;
 import java.awt.Color;
-import javax.swing.JButton;
-import javax.swing.JTextField;
-import javax.swing.GroupLayout.Alignment;
+import java.awt.Font;
+
 import javax.swing.GroupLayout;
-import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.SwingConstants;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class RequestKelasView extends javax.swing.JFrame {
 	
@@ -63,7 +60,7 @@ public class RequestKelasView extends javax.swing.JFrame {
 		btnAjukan		= new javax.swing.JButton();
 		btnBatalkan		= new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 175, 194));
 
@@ -143,6 +140,12 @@ public class RequestKelasView extends javax.swing.JFrame {
         jLabel5.setFont(new Font("Tahoma", Font.PLAIN, 15));
         
         JButton btnAjukan = new JButton("Ajukan");
+        btnAjukan.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		
+        	}
+        });
         btnAjukan.setFont(new Font("Tahoma", Font.PLAIN, 12));
         btnAjukan.setBorderPainted(false);
         btnAjukan.setBackground(new Color(0, 255, 51));

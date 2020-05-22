@@ -2,7 +2,6 @@ package com.empat.kelasku.data.controller;
 
 import java.awt.Component;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import com.empat.kelasku.Main;
@@ -11,7 +10,6 @@ import com.empat.kelasku.data.model.ContentViewEnum;
 import com.empat.kelasku.ui.view.JadwalView;
 import com.empat.kelasku.ui.view.KelasView;
 import com.empat.kelasku.ui.view.ProfileView;
-import com.empat.kelasku.ui.view.UserView;
 
 public class LayoutController {
 	

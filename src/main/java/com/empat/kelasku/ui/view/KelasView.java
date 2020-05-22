@@ -1,21 +1,30 @@
 package com.empat.kelasku.ui.view;
 
-import javax.swing.JFrame;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.JPanel;
-import java.awt.Color;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.awt.Font;
+import javax.swing.JPanel;
+import javax.swing.JTextPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import com.empat.kelasku.Main;
-
-import javax.swing.JTextPane;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import com.empat.kelasku.data.controller.LayoutController;
+import com.empat.kelasku.data.model.KelasSocketModel;
+import com.empat.kelasku.ui.view.components.CustomCardComponent;
 
 public class KelasView extends JFrame {
+	private JPanel kelasKosongContainer;
 	public KelasView() {
 		setUndecorated(true);
 		
@@ -24,132 +33,15 @@ public class KelasView extends JFrame {
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
+				.addComponent(panel, GroupLayout.PREFERRED_SIZE, 450, Short.MAX_VALUE)
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
+				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
 		);
 		
 		JLabel lblKelasKosongSaat = new JLabel("Kelas kosong saat ini");
 		lblKelasKosongSaat.setFont(new Font("Segoe UI", Font.BOLD, 18));
-		
-		JPanel panel_1 = new JPanel();
-		
-		JPanel panel_1_1 = new JPanel();
-		
-		JLabel lblE_1 = new JLabel("E1.1");
-		lblE_1.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		GroupLayout gl_panel_1_1 = new GroupLayout(panel_1_1);
-		gl_panel_1_1.setHorizontalGroup(
-			gl_panel_1_1.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 112, Short.MAX_VALUE)
-				.addGroup(gl_panel_1_1.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblE_1)
-					.addContainerGap(75, Short.MAX_VALUE))
-		);
-		gl_panel_1_1.setVerticalGroup(
-			gl_panel_1_1.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 111, Short.MAX_VALUE)
-				.addGroup(gl_panel_1_1.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblE_1)
-					.addContainerGap(80, Short.MAX_VALUE))
-		);
-		panel_1_1.setLayout(gl_panel_1_1);
-		
-		JPanel panel_1_2 = new JPanel();
-		
-		JLabel lblE_2 = new JLabel("E1.1");
-		lblE_2.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		GroupLayout gl_panel_1_2 = new GroupLayout(panel_1_2);
-		gl_panel_1_2.setHorizontalGroup(
-			gl_panel_1_2.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 112, Short.MAX_VALUE)
-				.addGroup(gl_panel_1_2.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblE_2)
-					.addContainerGap(75, Short.MAX_VALUE))
-		);
-		gl_panel_1_2.setVerticalGroup(
-			gl_panel_1_2.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 111, Short.MAX_VALUE)
-				.addGroup(gl_panel_1_2.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblE_2)
-					.addContainerGap(80, Short.MAX_VALUE))
-		);
-		panel_1_2.setLayout(gl_panel_1_2);
-		
-		JPanel panel_1_3 = new JPanel();
-		
-		JLabel lblE_3 = new JLabel("E1.1");
-		lblE_3.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		GroupLayout gl_panel_1_3 = new GroupLayout(panel_1_3);
-		gl_panel_1_3.setHorizontalGroup(
-			gl_panel_1_3.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 112, Short.MAX_VALUE)
-				.addGroup(gl_panel_1_3.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblE_3)
-					.addContainerGap(75, Short.MAX_VALUE))
-		);
-		gl_panel_1_3.setVerticalGroup(
-			gl_panel_1_3.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 111, Short.MAX_VALUE)
-				.addGroup(gl_panel_1_3.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblE_3)
-					.addContainerGap(80, Short.MAX_VALUE))
-		);
-		panel_1_3.setLayout(gl_panel_1_3);
-		
-		JPanel panel_1_4 = new JPanel();
-		
-		JLabel lblE_4 = new JLabel("E1.1");
-		lblE_4.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		GroupLayout gl_panel_1_4 = new GroupLayout(panel_1_4);
-		gl_panel_1_4.setHorizontalGroup(
-			gl_panel_1_4.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 112, Short.MAX_VALUE)
-				.addGroup(gl_panel_1_4.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblE_4)
-					.addContainerGap(75, Short.MAX_VALUE))
-		);
-		gl_panel_1_4.setVerticalGroup(
-			gl_panel_1_4.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 111, Short.MAX_VALUE)
-				.addGroup(gl_panel_1_4.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblE_4)
-					.addContainerGap(80, Short.MAX_VALUE))
-		);
-		panel_1_4.setLayout(gl_panel_1_4);
-		
-		JPanel panel_1_5 = new JPanel();
-		
-		JLabel lblE_5 = new JLabel("E1.1");
-		lblE_5.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		GroupLayout gl_panel_1_5 = new GroupLayout(panel_1_5);
-		gl_panel_1_5.setHorizontalGroup(
-			gl_panel_1_5.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 112, Short.MAX_VALUE)
-				.addGroup(gl_panel_1_5.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblE_5)
-					.addContainerGap(75, Short.MAX_VALUE))
-		);
-		gl_panel_1_5.setVerticalGroup(
-			gl_panel_1_5.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 111, Short.MAX_VALUE)
-				.addGroup(gl_panel_1_5.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblE_5)
-					.addContainerGap(80, Short.MAX_VALUE))
-		);
-		panel_1_5.setLayout(gl_panel_1_5);
 		
 		JPanel pnlKelas_1_1 = new JPanel();
 		pnlKelas_1_1.setForeground(Color.BLACK);
@@ -197,6 +89,13 @@ public class KelasView extends JFrame {
 		pnlKelas_1_1.setLayout(gl_pnlKelas_1_1);
 		
 		JPanel pnlKelas_1_1_1 = new JPanel();
+		pnlKelas_1_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				RequestKelasView requestKelasView =  new RequestKelasView();
+				requestKelasView.setVisible(true);
+			}
+		});
 		pnlKelas_1_1_1.setForeground(Color.BLACK);
 		pnlKelas_1_1_1.setBackground(Color.LIGHT_GRAY);
 		
@@ -232,71 +131,94 @@ public class KelasView extends JFrame {
 					.addContainerGap(5, Short.MAX_VALUE))
 		);
 		pnlKelas_1_1_1.setLayout(gl_pnlKelas_1_1_1);
+		
+		kelasKosongContainer = new JPanel();
+		kelasKosongContainer.setBackground(Color.WHITE);
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(49)
-					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-						.addComponent(pnlKelas_1_1, GroupLayout.PREFERRED_SIZE, 141, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(kelasKosongContainer, GroupLayout.PREFERRED_SIZE, 386, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+							.addComponent(pnlKelas_1_1, GroupLayout.PREFERRED_SIZE, 141, GroupLayout.PREFERRED_SIZE)
 							.addGroup(gl_panel.createSequentialGroup()
-								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
-								.addGap(18)
-								.addComponent(panel_1_1, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
-								.addGap(18)
-								.addComponent(panel_1_2, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE))
-							.addComponent(lblKelasKosongSaat)
-							.addGroup(gl_panel.createSequentialGroup()
-								.addComponent(panel_1_3, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
-								.addGap(18)
-								.addComponent(panel_1_4, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
-								.addGap(18)
-								.addComponent(panel_1_5, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE))
-							.addComponent(pnlKelas_1_1_1, GroupLayout.PREFERRED_SIZE, 141, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(68, Short.MAX_VALUE))
+								.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+									.addComponent(lblKelasKosongSaat)
+									.addComponent(pnlKelas_1_1_1, GroupLayout.PREFERRED_SIZE, 141, GroupLayout.PREFERRED_SIZE))
+								.addGap(236))))
+					.addContainerGap(2, Short.MAX_VALUE))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(65)
 					.addComponent(lblKelasKosongSaat, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel_1_2, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel_1_1, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel_1_3, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel_1_4, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel_1_5, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(kelasKosongContainer, GroupLayout.PREFERRED_SIZE, 246, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addComponent(pnlKelas_1_1, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
 					.addGap(28)
 					.addComponent(pnlKelas_1_1_1, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(34, Short.MAX_VALUE))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
-		
-		JLabel lblE = new JLabel("E1.1");
-		lblE.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
-		gl_panel_1.setHorizontalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_1.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblE)
-					.addContainerGap(75, Short.MAX_VALUE))
-		);
-		gl_panel_1.setVerticalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_1.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblE)
-					.addContainerGap(80, Short.MAX_VALUE))
-		);
-		panel_1.setLayout(gl_panel_1);
 		panel.setLayout(gl_panel);
 		getContentPane().setLayout(groupLayout);
+		
+		if (Main.kelasSocket != null) {
+			createKelasKosong(Main.kelasSocket);
+		}
+	}
+	
+	private GridBagConstraints makeGbc(int x, int y) {
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(2, 2, 2, 2);
+        gbc.weightx = 0;
+        gbc.weighty = 0;
+        gbc.gridx = x;
+        gbc.gridy = y;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        return gbc;
+    }
+	
+	public void createKelasKosong(KelasSocketModel kelasSocket) {
+		LayoutController.removePanelComponents(kelasKosongContainer);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		ArrayList<String> kelasKosong = kelasSocket.getKelasKosong();
+		System.out.println(kelasKosong.size());
+		int counter = 0;
+		int col = 0;
+		int row = 0;
+		for(String namaKelas : kelasKosong) {
+			counter++;
+			
+			GridBagConstraints gbc = makeGbc(col, row);
+			kelasKosongContainer.add(createKelasKosongItem(namaKelas), gbc);
+			kelasKosongContainer.revalidate();
+			kelasKosongContainer.repaint();
+			
+			col++;
+			if (col == 4) {
+				col = 0;
+				row++;
+			}
+			if (counter == 6) {
+				break;
+			}
+		}
+	}
+
+	public Container createKelasKosongItem(String namaKelas) {
+		Container kelasKosongItem = new CustomCardComponent(namaKelas);
+		kelasKosongItem.setPreferredSize(new Dimension(120, 120));
+		return kelasKosongItem;
+	}
+	public JPanel getKelasKosongContainer() {
+		return kelasKosongContainer;
 	}
 }

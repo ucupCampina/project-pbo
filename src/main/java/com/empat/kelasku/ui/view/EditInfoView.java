@@ -1,22 +1,15 @@
 package com.empat.kelasku.ui.view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import com.empat.kelasku.util.Constants;
-import com.empat.kelasku.util.ImageResizer;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import java.awt.Font;
 import java.awt.Color;
-import javax.swing.JButton;
-import javax.swing.JTextField;
-import javax.swing.GroupLayout.Alignment;
+import java.awt.Font;
+
 import javax.swing.GroupLayout;
-import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class EditInfoView extends javax.swing.JFrame {
 	private javax.swing.JPanel jPanel1;
@@ -268,4 +261,5 @@ public class EditInfoView extends javax.swing.JFrame {
 
         pack();
 	}
+	
 }
