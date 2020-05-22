@@ -32,7 +32,9 @@ public class KelasFullView extends JFrame {
 	public GridBagConstraints gbc;
 
 	public KelasFullView() {
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setMinimumSize(new Dimension(800, 600));
 		setBounds(100, 100, 450, 300);
 
 		contentPane = new JPanel();

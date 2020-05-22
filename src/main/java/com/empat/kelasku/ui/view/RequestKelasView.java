@@ -12,9 +12,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import com.empat.kelasku.Main;
+
 import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class RequestKelasView extends javax.swing.JFrame {
 	
@@ -245,6 +250,14 @@ public class RequestKelasView extends javax.swing.JFrame {
         jLabel3.setBounds(0, 0, 106, 108);
         panel3.add(jLabel3);
         getContentPane().setLayout(layout);
+        
+        Main.isRequestKelasViewRendered = true;
+
+		this.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				Main.isRequestKelasViewRendered = false;
+			}
+		});
 
         pack();
 	}

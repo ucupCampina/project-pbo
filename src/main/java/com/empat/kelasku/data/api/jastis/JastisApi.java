@@ -20,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class JastisApi {
 
-	public static final String BASE_URL = Environment.DEV.getUrl() + "/api/v1/";
+	public static final String BASE_URL = Environment.PROD.getUrl() + "/api/v1/";
 	private static Retrofit retrofit = null;
 
 	public static Retrofit getClient() {

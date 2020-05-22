@@ -16,7 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextPane;
+import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 
@@ -112,13 +112,13 @@ public class LayoutView extends JFrame {
 		navItemJadwal.setForeground(new Color(0, 0, 0));
 		navItemJadwal.setBackground(new Color(255, 255, 255));
 
-		JTextPane txtpnJadwal = new JTextPane();
+		JLabel txtpnJadwal = new JLabel();
 		txtpnJadwal.setText("Jadwal");
 		txtpnJadwal.setForeground(new Color(0, 0, 0));
 		txtpnJadwal.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		txtpnJadwal.setBackground(new Color(255, 255, 255));
 
-		JTextPane txtpnKelas_1_1 = new JTextPane();
+		JLabel txtpnKelas_1_1 = new JLabel();
 		txtpnKelas_1_1.setText("\u203A");
 		txtpnKelas_1_1.setForeground(new Color(0, 0, 0));
 		txtpnKelas_1_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -152,13 +152,13 @@ public class LayoutView extends JFrame {
 		navItemUser.setForeground(Color.BLACK);
 		navItemUser.setBackground(Color.WHITE);
 
-		JTextPane txtpnUser = new JTextPane();
+		JLabel txtpnUser = new JLabel();
 		txtpnUser.setText("User");
 		txtpnUser.setForeground(Color.BLACK);
 		txtpnUser.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		txtpnUser.setBackground(Color.WHITE);
 
-		JTextPane txtpnKelas_1_1_1 = new JTextPane();
+		JLabel txtpnKelas_1_1_1 = new JLabel();
 		txtpnKelas_1_1_1.setText("\u203A");
 		txtpnKelas_1_1_1.setForeground(Color.BLACK);
 		txtpnKelas_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -231,13 +231,13 @@ public class LayoutView extends JFrame {
 					.addContainerGap(56, Short.MAX_VALUE))
 		);
 
-		JTextPane txtpnJadwal_1 = new JTextPane();
+		JLabel txtpnJadwal_1 = new JLabel();
 		txtpnJadwal_1.setText("Kelas");
 		txtpnJadwal_1.setForeground(Color.BLACK);
 		txtpnJadwal_1.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		txtpnJadwal_1.setBackground(Color.WHITE);
 
-		JTextPane txtpnKelas_1_1_2 = new JTextPane();
+		JLabel txtpnKelas_1_1_2 = new JLabel();
 		txtpnKelas_1_1_2.setText("\u203A");
 		txtpnKelas_1_1_2.setForeground(Color.BLACK);
 		txtpnKelas_1_1_2.setFont(new Font("Tahoma", Font.PLAIN, 20));

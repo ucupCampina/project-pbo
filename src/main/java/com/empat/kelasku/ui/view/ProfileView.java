@@ -13,10 +13,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextPane;
+import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 
+import com.empat.kelasku.data.controller.AuthController;
 import com.empat.kelasku.data.controller.LayoutController;
 import com.empat.kelasku.data.model.ContentViewEnum;
 import com.empat.kelasku.util.Constants;
@@ -67,13 +68,13 @@ public class ProfileView extends JFrame {
 		navItemEditAccount.setForeground(Color.BLACK);
 		navItemEditAccount.setBackground(Color.LIGHT_GRAY);
 		
-		JTextPane txtpnEditAccount = new JTextPane();
+		JLabel txtpnEditAccount = new JLabel();
 		txtpnEditAccount.setText("Edit Account");
 		txtpnEditAccount.setForeground(Color.BLACK);
 		txtpnEditAccount.setFont(new Font("Dialog", Font.PLAIN, 18));
 		txtpnEditAccount.setBackground(Color.LIGHT_GRAY);
 		
-		JTextPane txtpnKelas_1_1_3 = new JTextPane();
+		JLabel txtpnKelas_1_1_3 = new JLabel();
 		txtpnKelas_1_1_3.setText("›");
 		txtpnKelas_1_1_3.setForeground(Color.BLACK);
 		txtpnKelas_1_1_3.setFont(new Font("Dialog", Font.PLAIN, 20));
@@ -100,16 +101,28 @@ public class ProfileView extends JFrame {
 		navItemEditAccount.setLayout(gl_navItemEditAccount);
 		
 		JPanel navItemJadwal_1 = new JPanel();
+		navItemJadwal_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				AuthController.logoutUser();
+			}
+		});
 		navItemJadwal_1.setForeground(Color.BLACK);
 		navItemJadwal_1.setBackground(Color.RED);
 		
-		JTextPane txtpnLogoutAccount = new JTextPane();
+		JLabel txtpnLogoutAccount = new JLabel();
+		txtpnLogoutAccount.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				AuthController.logoutUser();
+			}
+		});
 		txtpnLogoutAccount.setText("Logout Account");
 		txtpnLogoutAccount.setForeground(Color.WHITE);
 		txtpnLogoutAccount.setFont(new Font("Dialog", Font.PLAIN, 18));
 		txtpnLogoutAccount.setBackground(Color.RED);
 		
-		JTextPane txtpnKelas_1_1_4 = new JTextPane();
+		JLabel txtpnKelas_1_1_4 = new JLabel();
 		txtpnKelas_1_1_4.setText("›");
 		txtpnKelas_1_1_4.setForeground(Color.BLACK);
 		txtpnKelas_1_1_4.setFont(new Font("Dialog", Font.PLAIN, 20));

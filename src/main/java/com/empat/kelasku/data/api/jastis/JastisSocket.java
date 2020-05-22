@@ -20,7 +20,7 @@ public class JastisSocket {
 	public JastisSocket() {
 		try {
 
-			socket = IO.socket(Environment.DEV.getUrl());
+			socket = IO.socket(Environment.PROD.getUrl());
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
