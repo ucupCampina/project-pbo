@@ -116,7 +116,7 @@ public class LoginView extends javax.swing.JFrame {
 
 		passwordField.setBackground(Constants.accentColor);
 		passwordField.setForeground(new java.awt.Color(255, 255, 255));
-		passwordField.setText("jPasswordField1");
+		passwordField.setText("");
 		passwordField.setBorder(null);
 		passwordField.setCaretColor(new java.awt.Color(255, 255, 255));
 

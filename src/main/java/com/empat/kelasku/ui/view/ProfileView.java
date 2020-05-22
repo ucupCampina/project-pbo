@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 
+import com.empat.kelasku.Main;
 import com.empat.kelasku.data.controller.AuthController;
 import com.empat.kelasku.data.controller.LayoutController;
 import com.empat.kelasku.data.model.ContentViewEnum;
@@ -67,6 +68,16 @@ public class ProfileView extends JFrame {
 		JPanel navItemEditAccount = new JPanel();
 		navItemEditAccount.setForeground(Color.BLACK);
 		navItemEditAccount.setBackground(Color.LIGHT_GRAY);
+		navItemEditAccount.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (!Main.isEditInfoViewRendered) {
+					EditInfoView editInfoView = new EditInfoView();
+					editInfoView.setVisible(true);
+
+				}
+			}
+		});
 		
 		JLabel txtpnEditAccount = new JLabel();
 		txtpnEditAccount.setText("Edit Account");

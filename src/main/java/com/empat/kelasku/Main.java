@@ -24,6 +24,7 @@ public class Main {
 	public static Component activeContentPanelView;
 	public static boolean isKelasFullViewRendered = false;
 	public static boolean isRequestKelasViewRendered = false;
+	public static boolean isEditInfoViewRendered = false;
 
 	public static void main(String[] args) {
 		startKelasSocket();

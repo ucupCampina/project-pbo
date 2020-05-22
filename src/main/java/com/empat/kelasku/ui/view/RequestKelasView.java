@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -20,41 +21,34 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.Window.Type;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class RequestKelasView extends javax.swing.JFrame {
 	
 	private javax.swing.JComboBox comboBox;
-	private javax.swing.JPanel jPanel1;
-	private javax.swing.JPanel jPanel2;
 	private javax.swing.JPanel jPanel3;
-	private javax.swing.JButton jButton1;
-	private javax.swing.JButton jButton2;
-	private javax.swing.JButton jButton3;
 	private javax.swing.JLabel lblRequestKelas;
 	private javax.swing.JLabel jLabel2;
-	private javax.swing.JLabel jLabel1;
 	private javax.swing.JLabel jLabel3;
 	private javax.swing.JLabel jLabel5;
 	private javax.swing.JLabel jLabel6;
 	private javax.swing.JLabel jLabel7;
 	private javax.swing.JTextField jTextField1;
+	private JTextField jTextField1_1;
 	private javax.swing.JTextField jTextField2;
+	private JTextField jTextField2_1;
 	private javax.swing.JButton btnAjukan;
 	private javax.swing.JButton btnBatalkan;
 	private javax.swing.JButton btnCek;
+	private JButton btnCek_1;
 	
 	public RequestKelasView() {
-
-		jPanel1			= new javax.swing.JPanel();
-		jPanel2			= new javax.swing.JPanel();
+		setType(Type.UTILITY);
 		jPanel3			= new javax.swing.JPanel();
 		comboBox 		= new javax.swing.JComboBox();
-		jButton1		= new javax.swing.JButton();
-		jButton2		= new javax.swing.JButton();
-		jButton3		= new javax.swing.JButton();
 		lblRequestKelas	= new javax.swing.JLabel();
-		jLabel2			= new javax.swing.JLabel();
-		jLabel1			= new javax.swing.JLabel();
 		jLabel3			= new javax.swing.JLabel();
 		jLabel5			= new javax.swing.JLabel();
 		jLabel6			= new javax.swing.JLabel();
@@ -66,69 +60,6 @@ public class RequestKelasView extends javax.swing.JFrame {
 		btnBatalkan		= new javax.swing.JButton();
 
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-        jPanel1.setBackground(new java.awt.Color(153, 175, 194));
-
-        jPanel2.setBackground(new java.awt.Color(153, 175, 194));
-
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Kelasku");
-
-        javax.swing.GroupLayout gl_jPanel2 = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(gl_jPanel2);
-        gl_jPanel2.setHorizontalGroup(
-            gl_jPanel2.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(gl_jPanel2.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        gl_jPanel2.setVerticalGroup(
-            gl_jPanel2.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gl_jPanel2.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(25, 25, 25))
-        );
-
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Jadwal");
-
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Kelas");
-
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("User");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74))
-        );
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-male-user-100.png")));
         
         JLabel lblRequestKelas = new JLabel("Request Kelas Yang Ingin Digunakan");
         lblRequestKelas.setHorizontalAlignment(SwingConstants.LEFT);
@@ -145,111 +76,126 @@ public class RequestKelasView extends javax.swing.JFrame {
         jLabel5.setFont(new Font("Tahoma", Font.PLAIN, 15));
         
         JButton btnAjukan = new JButton("Ajukan");
+        btnAjukan.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
+        	}
+        });
         btnAjukan.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
-        		
+				int choice = exitDialog("Mengajukan");
+				if (choice == 0) {
+					dispose();
+				}
         	}
         });
         btnAjukan.setFont(new Font("Tahoma", Font.PLAIN, 12));
         btnAjukan.setBorderPainted(false);
         btnAjukan.setBackground(new Color(0, 255, 51));
         
-        JButton btnBatalkan = new JButton("Cancel");
+        JButton btnBatalkan = new JButton("Batalkan");
+        btnBatalkan.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+				int choice = exitDialog("Membatalkan");
+				if (choice == 0) {
+					System.exit(0);
+				}
+        	}
+        });
         btnBatalkan.setFont(new Font("Tahoma", Font.PLAIN, 12));
         btnBatalkan.setBorderPainted(false);
         btnBatalkan.setBackground(Color.RED);
         
-        jTextField2 = new JTextField();
-        jTextField2.setColumns(10);
+        jTextField2_1 = new JTextField();
+        jTextField2_1.setColumns(10);
         
-        jTextField1 = new JTextField();
-        jTextField1.setColumns(10);
+        jTextField1_1 = new JTextField();
+        jTextField1_1.setColumns(10);
         
         JPanel panel3 = new JPanel();
         panel3.setBackground(Color.LIGHT_GRAY);
         
         JComboBox comboBox = new JComboBox();
         
-        btnCek = new JButton("Cek");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        layout.setHorizontalGroup(
-        	layout.createParallelGroup(Alignment.LEADING)
-        		.addGroup(layout.createSequentialGroup()
-        			.addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        				.addGroup(layout.createSequentialGroup()
-        					.addGap(36)
-        					.addComponent(lblRequestKelas, GroupLayout.PREFERRED_SIZE, 503, GroupLayout.PREFERRED_SIZE)
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addComponent(jLabel2))
-        				.addGroup(layout.createSequentialGroup()
-        					.addGap(62)
-        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        						.addGroup(layout.createSequentialGroup()
-        							.addComponent(btnAjukan, GroupLayout.PREFERRED_SIZE, 182, GroupLayout.PREFERRED_SIZE)
-        							.addGap(324)
-        							.addComponent(btnBatalkan, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE))
-        						.addGroup(layout.createSequentialGroup()
-        							.addGap(20)
-        							.addComponent(panel3, GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE)
-        							.addGap(80)
-        							.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        								.addGroup(layout.createSequentialGroup()
-        									.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        										.addComponent(jLabel6)
-        										.addComponent(jLabel7))
-        									.addGap(78)
-        									.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        										.addComponent(jTextField1, GroupLayout.PREFERRED_SIZE, 269, GroupLayout.PREFERRED_SIZE)
-        										.addComponent(jTextField2, GroupLayout.PREFERRED_SIZE, 269, GroupLayout.PREFERRED_SIZE)))
-        								.addComponent(jLabel5, GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
-        								.addGroup(layout.createSequentialGroup()
-        									.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 276, GroupLayout.PREFERRED_SIZE)
-        									.addGap(56)
-        									.addComponent(btnCek)))))))
-        			.addGap(52))
+        btnCek_1 = new JButton("Cek");
+        panel3.setLayout(null);
+        jLabel2			= new javax.swing.JLabel();
+        jLabel2.setHorizontalAlignment(SwingConstants.CENTER);
+        jLabel2.setBounds(0, 0, 106, 106);
+        panel3.add(jLabel2);
+        
+                jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-male-user-100.png")));
+        GroupLayout groupLayout = new GroupLayout(getContentPane());
+        groupLayout.setHorizontalGroup(
+        	groupLayout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(groupLayout.createSequentialGroup()
+        			.addGap(93)
+        			.addComponent(panel3, GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE)
+        			.addGap(80)
+        			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addComponent(jLabel7)
+        					.addGap(78)
+        					.addComponent(jTextField1_1, GroupLayout.PREFERRED_SIZE, 269, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addComponent(jLabel6)
+        					.addGap(93)
+        					.addComponent(jTextField2_1, GroupLayout.PREFERRED_SIZE, 269, GroupLayout.PREFERRED_SIZE))
+        				.addComponent(jLabel5, GroupLayout.PREFERRED_SIZE, 476, GroupLayout.PREFERRED_SIZE)))
+        		.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+        			.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+        				.addGap(73)
+        				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        					.addGroup(groupLayout.createSequentialGroup()
+        						.addGap(58)
+        						.addComponent(btnAjukan, GroupLayout.PREFERRED_SIZE, 182, GroupLayout.PREFERRED_SIZE)
+        						.addGap(113)
+        						.addComponent(btnBatalkan, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE))
+        					.addComponent(lblRequestKelas, GroupLayout.PREFERRED_SIZE, 503, GroupLayout.PREFERRED_SIZE))
+        				.addContainerGap(154, Short.MAX_VALUE))
+        			.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+        				.addGap(279)
+        				.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 276, GroupLayout.PREFERRED_SIZE)
+        				.addGap(56)
+        				.addComponent(btnCek_1)))
         );
-        layout.setVerticalGroup(
-        	layout.createParallelGroup(Alignment.LEADING)
-        		.addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
-        		.addGroup(layout.createSequentialGroup()
+        groupLayout.setVerticalGroup(
+        	groupLayout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(groupLayout.createSequentialGroup()
         			.addGap(52)
         			.addComponent(lblRequestKelas, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-        			.addGap(41)
-        			.addComponent(jLabel2)
-        			.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
-        				.addGroup(layout.createSequentialGroup()
-        					.addGap(26)
-        					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        			.addGap(37)
+        			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addGap(10)
+        					.addComponent(panel3, GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
         						.addComponent(jLabel7)
-        						.addComponent(jTextField1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        						.addGroup(groupLayout.createSequentialGroup()
+        							.addGap(1)
+        							.addComponent(jTextField1_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
         					.addGap(27)
-        					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
         						.addComponent(jLabel6)
-        						.addComponent(jTextField2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        						.addGroup(groupLayout.createSequentialGroup()
+        							.addGap(1)
+        							.addComponent(jTextField2_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
         					.addGap(28)
-        					.addComponent(jLabel5))
-        				.addGroup(layout.createSequentialGroup()
-        					.addGap(36)
-        					.addComponent(panel3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        					.addComponent(jLabel5)))
         			.addGap(27)
-        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
         				.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-        				.addComponent(btnCek, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
-        			.addGap(96)
-        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addGap(1)
+        					.addComponent(btnCek_1, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)))
+        			.addGap(42)
+        			.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(btnAjukan, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
         				.addComponent(btnBatalkan, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
-        			.addGap(71))
+        			.addGap(54))
         );
-        panel3.setLayout(null);
-        
-        jLabel3 = new JLabel("");
-        jLabel3.setBounds(0, 0, 106, 108);
-        panel3.add(jLabel3);
-        getContentPane().setLayout(layout);
+        getContentPane().setLayout(groupLayout);
         
         Main.isRequestKelasViewRendered = true;
 
@@ -260,6 +206,10 @@ public class RequestKelasView extends javax.swing.JFrame {
 		});
 
         pack();
+	}
+	
+	public int exitDialog(String opsi) {
+		return JOptionPane.showConfirmDialog(null, "Anda Yakin Ingin " + opsi + " Request?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
 	}
 	
 }
