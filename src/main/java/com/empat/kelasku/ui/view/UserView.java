@@ -1,7 +1,7 @@
 package com.empat.kelasku.ui.view;
 
-import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class UserView extends JPanel {
 

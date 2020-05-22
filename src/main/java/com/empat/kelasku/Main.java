@@ -1,7 +1,8 @@
 package com.empat.kelasku;
 
-import com.empat.kelasku.data.api.jastis.JastisApi;
-import com.empat.kelasku.data.api.jastis.JastisApiInterface;
+import java.awt.Component;
+import java.util.ArrayList;
+
 import com.empat.kelasku.data.api.jastis.JastisSocket;
 import com.empat.kelasku.data.api.jastis.KelasSocketCallback;
 import com.empat.kelasku.data.model.JadwalModel;
@@ -9,18 +10,6 @@ import com.empat.kelasku.data.model.KelasSocketModel;
 import com.empat.kelasku.ui.view.KelasFullView;
 import com.empat.kelasku.ui.view.LayoutView;
 import com.empat.kelasku.ui.view.LoginView;
-import com.empat.kelasku.util.CallbackInterface;
-
-import java.awt.Component;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.JFrame;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class Main {
 
@@ -35,14 +24,15 @@ public class Main {
 
 	public static void main(String[] args) {
 		startKelasSocket();
-		mainPage();
+		loginPage();
 	}
 
 	public static void startKelasSocket() {
 		jastisSocket = JastisSocket.getInstance();
 		try {
 			jastisSocket.connect();
-		} catch (URISyntaxException e) {
+		} catch (Exception e) {
+			System.out.println(e);
 			e.printStackTrace();
 		}
 		KelasSocketCallback kelasSocketCallback = new KelasSocketCallback();

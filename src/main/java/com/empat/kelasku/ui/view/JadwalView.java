@@ -1,20 +1,23 @@
 package com.empat.kelasku.ui.view;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.GridLayout;
+import java.util.ArrayList;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import com.empat.kelasku.data.controller.LayoutController;
 import com.empat.kelasku.data.model.JadwalModel;
-import com.empat.kelasku.data.model.KelasSocketModel;
-
-import java.awt.GridLayout;
+import com.empat.kelasku.ui.view.components.CustomCardComponent;
 
 public class JadwalView extends JPanel {
+	
+	public static String tingkat = "11", jurusan = "RPL", rombel = "1";
+	
 	private JPanel jadwalHariIniContainer;
 
 	public JadwalView() {
@@ -25,17 +28,14 @@ public class JadwalView extends JPanel {
 		add(jadwalHariIniLabel, BorderLayout.NORTH);
 
 		jadwalHariIniContainer = new JPanel();
+		jadwalHariIniContainer.setBackground(Color.WHITE);
 		add(jadwalHariIniContainer, BorderLayout.CENTER);
-		jadwalHariIniContainer.setLayout(new GridLayout(0, 3, 0, 0));
+		GridLayout gridLayout = new GridLayout(0, 3, 4, 4);
+		jadwalHariIniContainer.setLayout(gridLayout);
 	}
 
 	public void createJadwalHariIni(ArrayList<JadwalModel> listJadwal) {
 		LayoutController.removePanelComponents(jadwalHariIniContainer);
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 		listJadwal.forEach(n -> {
 			if (n != null) {
 				jadwalHariIniContainer.add(createJadwalHariIniItem(n.getPelajaran()));
@@ -45,10 +45,8 @@ public class JadwalView extends JPanel {
 		});
 	}
 
-	public JPanel createJadwalHariIniItem(String namaKelas) {
-		JPanel jadwalItem = new JPanel();
-		JLabel jadwalLabel = new JLabel(namaKelas);
-		jadwalItem.add(jadwalLabel);
+	public Container createJadwalHariIniItem(String namaKelas) {
+		Container jadwalItem = new CustomCardComponent(namaKelas);
 		return jadwalItem;
 	}
 

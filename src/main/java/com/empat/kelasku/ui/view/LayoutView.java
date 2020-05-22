@@ -1,40 +1,26 @@
 package com.empat.kelasku.ui.view;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.SystemColor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.JToolBar;
-import java.awt.Window.Type;
-import java.awt.Dialog.ModalExclusionType;
-import java.awt.Dimension;
-import java.awt.CardLayout;
-import java.awt.GridBagLayout;
-import java.awt.SystemColor;
-import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import java.awt.Font;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Panel;
-import java.awt.Color;
-import java.awt.Component;
-
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextPane;
-import javax.swing.border.SoftBevelBorder;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.SwingConstants;
 
 import com.empat.kelasku.data.controller.LayoutController;
 import com.empat.kelasku.data.model.ContentViewEnum;
 import com.empat.kelasku.util.Constants;
-
-import javax.swing.border.BevelBorder;
-import javax.swing.border.EmptyBorder;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.GridLayout;
 
 public class LayoutView extends JFrame {
 	private JPanel contentPanel;
@@ -53,9 +39,33 @@ public class LayoutView extends JFrame {
 				.addComponent(layoutBackgroundPanel, GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE));
 
 		JPanel navigationPanel = new JPanel();
+		navigationPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				setMousePosition(e);
+			}
+		});
+		navigationPanel.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				changeWindowPosition(e);
+			}
+		});
 		navigationPanel.setBackground(Constants.accentColor);
 
 		contentPanel = new JPanel();
+		contentPanel.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				changeWindowPosition(e);
+			}
+		});
+		contentPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				setMousePosition(e);
+			}
+		});
 		changePanelView(ContentViewEnum.KelasView);
 
 		GroupLayout gl_layoutBackgroundPanel = new GroupLayout(layoutBackgroundPanel);
@@ -171,39 +181,47 @@ public class LayoutView extends JFrame {
 		lblX_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.exit(0);
+				int choice = exitDialog();
+				if (choice == 0) {
+					System.exit(0);
+				}
 			}
 		});
 		lblX_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblX_1.setForeground(Color.RED);
 		lblX_1.setBackground(new Color(255, 0, 51));
 		GroupLayout gl_navigationPanel = new GroupLayout(navigationPanel);
-		gl_navigationPanel
-				.setHorizontalGroup(gl_navigationPanel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_navigationPanel.createSequentialGroup().addGap(80).addComponent(titleKelasku)
-								.addContainerGap(80, Short.MAX_VALUE))
-						.addGroup(gl_navigationPanel.createSequentialGroup().addGap(25)
-								.addGroup(gl_navigationPanel.createParallelGroup(Alignment.TRAILING)
-										.addComponent(navItemUser, GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-										.addComponent(navItemKelas, GroupLayout.PREFERRED_SIZE, 228,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(navItemJadwal, GroupLayout.PREFERRED_SIZE, 228,
-												GroupLayout.PREFERRED_SIZE))
-								.addGap(33))
-						.addGroup(gl_navigationPanel.createSequentialGroup()
-								.addComponent(lblX_1, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-								.addContainerGap(260, Short.MAX_VALUE)));
-		gl_navigationPanel.setVerticalGroup(gl_navigationPanel.createParallelGroup(Alignment.LEADING)
+		gl_navigationPanel.setHorizontalGroup(
+			gl_navigationPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_navigationPanel.createSequentialGroup()
-						.addComponent(lblX_1, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE).addGap(26)
-						.addComponent(titleKelasku, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
-						.addGap(78)
-						.addComponent(navItemKelas, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-						.addGap(29)
-						.addComponent(navItemJadwal, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
-						.addComponent(navItemUser, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-						.addGap(56)));
+					.addGap(80)
+					.addComponent(titleKelasku)
+					.addContainerGap(80, Short.MAX_VALUE))
+				.addGroup(gl_navigationPanel.createSequentialGroup()
+					.addComponent(lblX_1, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(277, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, gl_navigationPanel.createSequentialGroup()
+					.addContainerGap(42, Short.MAX_VALUE)
+					.addGroup(gl_navigationPanel.createParallelGroup(Alignment.TRAILING, false)
+						.addComponent(navItemUser, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(navItemKelas, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 228, Short.MAX_VALUE)
+						.addComponent(navItemJadwal, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
+					.addGap(33))
+		);
+		gl_navigationPanel.setVerticalGroup(
+			gl_navigationPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_navigationPanel.createSequentialGroup()
+					.addComponent(lblX_1, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+					.addGap(26)
+					.addComponent(titleKelasku, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+					.addGap(78)
+					.addComponent(navItemKelas, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+					.addGap(29)
+					.addComponent(navItemJadwal, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+					.addGap(140)
+					.addComponent(navItemUser, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(56, Short.MAX_VALUE))
+		);
 
 		JTextPane txtpnJadwal_1 = new JTextPane();
 		txtpnJadwal_1.setText("Kelas");
@@ -233,24 +251,41 @@ public class LayoutView extends JFrame {
 		navigationPanel.setLayout(gl_navigationPanel);
 		layoutBackgroundPanel.setLayout(gl_layoutBackgroundPanel);
 		getContentPane().setLayout(groupLayout);
+		
+//		this.addWindowListener(new WindowAdapter() {
+//			public void windowClosing(WindowEvent e) {
+//				Main.isKelasFullViewRendered = false;
+//				exitDialog();
+//			}
+//		});
+
+	}
+	
+
+    int xy;
+    int xx;
+	
+	private void setMousePosition(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
+        // TODO add your handling code here:
+
+        xx = evt.getX();
+        xy = evt.getY();
+    }//GEN-LAST:event_jPanel2MousePressed
+
+	
+	private void changeWindowPosition(java.awt.event.MouseEvent evt) {
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xx, y - xy);
+    }
+	
+	public int exitDialog() {
+		return JOptionPane.showConfirmDialog(null, "Anda Yakin Ingin Keluar Dari Aplikasi?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
 	}
 
 	public void changePanelView(ContentViewEnum view) {
-//		LayoutController.removePanelComponents(contentPanel);
-		Component[] componentList = contentPanel.getComponents();
-
-		if (componentList.length >= 1) {
-			for (Component c : componentList) {
-				contentPanel.remove(c);
-			}
-			contentPanel.revalidate();
-			contentPanel.repaint();
-		}
-		try {
-			Thread.sleep(200);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		LayoutController.removePanelComponents(contentPanel);
 		LayoutController.renderContent(contentPanel, view);
 	}
 
