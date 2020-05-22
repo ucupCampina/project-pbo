@@ -24,29 +24,30 @@ import com.empat.kelasku.util.Constants;
 public class ProfileView extends JFrame {
 
 	public ProfileView() {
+		getContentPane().setBackground(Color.WHITE);
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		setLocationByPlatform(true);
 		setUndecorated(true);
 		setSize(900, 500);
 
 		JPanel layoutBackgroundPanel = new JPanel();
+		layoutBackgroundPanel.setBackground(Color.WHITE);
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addContainerGap(47, Short.MAX_VALUE)
-					.addComponent(layoutBackgroundPanel, GroupLayout.PREFERRED_SIZE, 841, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
+				.addGroup(groupLayout.createSequentialGroup()
+					.addComponent(layoutBackgroundPanel, GroupLayout.PREFERRED_SIZE, 598, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(302, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(layoutBackgroundPanel, GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE))
+					.addComponent(layoutBackgroundPanel, GroupLayout.PREFERRED_SIZE, 437, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(63, Short.MAX_VALUE))
 		);
-		changePanelView(ContentViewEnum.KelasView);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(ProfileView.class.getResource("/images/icons8-male-user-100.png")));
@@ -137,39 +138,39 @@ public class ProfileView extends JFrame {
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
-					.addGap(77)
-					.addComponent(navItemJadwal_1, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(512, Short.MAX_VALUE))
 				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap(328, Short.MAX_VALUE)
-					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-						.addComponent(lblNewLabel)
-						.addComponent(lblNewLabel_1))
-					.addGap(377))
-				.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
-					.addGap(298)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNip)
-						.addComponent(lblNama, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE))
-					.addGap(101)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(label)
-						.addComponent(lblXxxxx))
-					.addContainerGap(320, Short.MAX_VALUE))
-				.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
-					.addGap(281)
-					.addComponent(navItemEditAccount, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(308, Short.MAX_VALUE))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(161)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panel.createSequentialGroup()
+									.addGap(17)
+									.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+										.addComponent(lblNip)
+										.addComponent(lblNama, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE))
+									.addGap(101)
+									.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+										.addComponent(label)
+										.addComponent(lblXxxxx)))
+								.addComponent(navItemEditAccount, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(226)
+							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+								.addComponent(lblNewLabel)
+								.addComponent(lblNewLabel_1)))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(21)
+							.addComponent(navItemJadwal_1, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(190, Short.MAX_VALUE))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(22)
+					.addGap(23)
 					.addComponent(lblNewLabel)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(lblNewLabel_1)
-					.addGap(34)
+					.addGap(18)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(label)
 						.addComponent(lblNip))
@@ -179,9 +180,9 @@ public class ProfileView extends JFrame {
 						.addComponent(lblNama))
 					.addGap(37)
 					.addComponent(navItemEditAccount, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-					.addComponent(navItemJadwal_1, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-					.addGap(28))
+					.addGap(47)
+					.addComponent(navItemJadwal_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(23, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
 
@@ -189,42 +190,19 @@ public class ProfileView extends JFrame {
 		gl_layoutBackgroundPanel.setHorizontalGroup(
 			gl_layoutBackgroundPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_layoutBackgroundPanel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 817, Short.MAX_VALUE)
-					.addContainerGap())
+					.addGap(6)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 579, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(256, Short.MAX_VALUE))
 		);
 		gl_layoutBackgroundPanel.setVerticalGroup(
 			gl_layoutBackgroundPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_layoutBackgroundPanel.createSequentialGroup()
-					.addGap(34)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 423, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(31, Short.MAX_VALUE))
+					.addGap(10)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 404, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(74, Short.MAX_VALUE))
 		);
 		layoutBackgroundPanel.setLayout(gl_layoutBackgroundPanel);
 		getContentPane().setLayout(groupLayout);
 	}
 
-	public void changePanelView(ContentViewEnum view) {
-
-		if (componentList.length >= 1) {
-			for (Component c : componentList) {
-				contentPanel.remove(c);
-			}
-			contentPanel.revalidate();
-			contentPanel.repaint();
-		}
-		try {
-			Thread.sleep(200);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public JPanel getContentPanel() {
-		return contentPanel;
-	}
-
-	public void setContentPanel(JPanel contentPanel) {
-		this.contentPanel = contentPanel;
-	}
 }
