@@ -86,7 +86,7 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ImageIcon moreIcon = ImageResizer.resizeIcon(Thread.currentThread().getContextClassLoader().getResource(&quot;./images/education.png&quot;), 25, 25);&#xa;iconLabel.setIcon(moreIcon); // NOI18N"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ImageIcon moreIcon = ImageResizer.resizeIcon(.class.getResource(&quot;images/education.png&quot;), 25, 25);&#xa;iconLabel.setIcon(moreIcon); // NOI18N"/>
           </AuxValues>
         </Component>
       </SubComponents>

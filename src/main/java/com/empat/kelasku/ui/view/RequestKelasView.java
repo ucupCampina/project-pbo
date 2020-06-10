@@ -124,7 +124,7 @@ public class RequestKelasView extends javax.swing.JFrame {
         jLabel2.setBounds(0, 0, 106, 106);
         panel3.add(jLabel2);
         
-                jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-male-user-100.png")));
+                jLabel2.setIcon(new javax.swing.ImageIcon(RequestKelasView.class.getResource("/images/icons8-male-user-100.png")));
         GroupLayout groupLayout = new GroupLayout(getContentPane());
         groupLayout.setHorizontalGroup(
         	groupLayout.createParallelGroup(Alignment.LEADING)

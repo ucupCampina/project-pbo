@@ -37,7 +37,7 @@ public class CustomCardComponent extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ImageIcon moreIcon = ImageResizer.resizeIcon(Thread.currentThread().getContextClassLoader().getResource("./images/education.png"), 25, 25);
+        ImageIcon moreIcon = ImageResizer.resizeIcon(CustomCardComponent.class.getResource("/images/education.png"), 25, 25);
         setLayout(new BorderLayout(0, 0));
         
         JLabel lblNamaKelas = new JLabel(namaKelas);

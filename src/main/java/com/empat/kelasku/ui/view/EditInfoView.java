@@ -63,7 +63,7 @@ public class EditInfoView extends javax.swing.JFrame {
 		btnAjukan		= new javax.swing.JButton();
 		btnBatalkan		= new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
         
         JLabel lblEditInfoAkun = new JLabel("Edit Info Akun");
         lblEditInfoAkun.setHorizontalAlignment(SwingConstants.LEFT);
@@ -138,7 +138,7 @@ public class EditInfoView extends javax.swing.JFrame {
         jLabel2.setBounds(0, 0, 106, 108);
         panel3.add(jLabel2);
         
-                jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-male-user-100.png")));
+                jLabel2.setIcon(new javax.swing.ImageIcon(EditInfoView.class.getResource("/images/icons8-male-user-100.png")));
         GroupLayout groupLayout = new GroupLayout(getContentPane());
         groupLayout.setHorizontalGroup(
         	groupLayout.createParallelGroup(Alignment.LEADING)

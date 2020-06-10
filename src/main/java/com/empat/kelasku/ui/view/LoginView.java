@@ -202,7 +202,7 @@ public class LoginView extends javax.swing.JFrame {
 		logoIconLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 		logoIconLabel.setForeground(new java.awt.Color(255, 255, 255));
 		ImageIcon logoIcon = ImageResizer
-				.resizeIcon(Thread.currentThread().getContextClassLoader().getResource("./images/a.png"), 200, 200);
+				.resizeIcon(LoginView.class.getResource("/images/a.png"), 200, 200);
 		logoIconLabel.setIcon(logoIcon); // NOI18N
 
 		logoTitle.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -212,7 +212,7 @@ public class LoginView extends javax.swing.JFrame {
 		moreIconLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 		moreIconLabel.setForeground(new java.awt.Color(102, 102, 102));
 		ImageIcon moreIcon = ImageResizer.resizeIcon(
-				Thread.currentThread().getContextClassLoader().getResource("./images/more_20px_1.png"), 20, 20);
+				LoginView.class.getResource("/images/more_20px_1.png"), 20, 20);
 		moreIconLabel.setIcon(moreIcon); // NOI18N
 
 		logoDesc.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
